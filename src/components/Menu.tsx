@@ -7,18 +7,18 @@ export const Menu = ({
 }) => (
 	<View className="items-center flex-1 px-10 pt-52">
 		<Text className="text-primary text-5xl mb-12 font-bold">Tic Tac Toe</Text>
-		<Text className="text-secondary text-2xl mb-6">Choose who goes first</Text>
+		<Text className="text-secondary text-2xl mb-12">Choose who goes first</Text>
 		<Pressable
 			className="w-full py-4 bg-button-primary rounded-lg justify-center items-center mb-6"
 			onPress={() => startNewGame(true)}
 		>
-			<Text className="text-primary text-lg font-bold">{`I'll go first (X)`}</Text>
+			<Text className="text-button-text-primary text-lg font-bold">{`I'll go first (X)`}</Text>
 		</Pressable>
 		<Pressable
-			className="w-full py-4 bg-button-secondary rounded-lg justify-center items-center"
+			className="w-full py-4 bg-button-tertiary rounded-lg justify-center items-center"
 			onPress={() => startNewGame(false)}
 		>
-			<Text className="text-primary text-lg font-bold">
+			<Text className="text-button-text-primary text-lg font-bold">
 				Computer goes first (O)
 			</Text>
 		</Pressable>
