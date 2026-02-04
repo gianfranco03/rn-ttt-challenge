@@ -48,7 +48,8 @@ Uniwind provides Tailwind CSS utility classes for React Native:
 1. **Clone the repository**
 
    ```bash
-   git clone -b develop [repo link]
+   git clone -b develop git@github.com:gianfranco03/rn-ttt-challenge.git
+   cd rn-ttt-challenge
    ```
 
 2. **Install dependencies**
