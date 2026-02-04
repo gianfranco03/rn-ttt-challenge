@@ -24,5 +24,11 @@ export const Menu = ({
 				Computer goes first (O)
 			</Text>
 		</Pressable>
+		<Text className="text-secondary text-center text-base mt-20">
+			Tic Tac Toe Challenge - React Native and Expo
+		</Text>
+		<Text className="text-secondary text-center text-sm mt-4">
+			Developed by Gianfranco Hernandez
+		</Text>
 	</View>
 );

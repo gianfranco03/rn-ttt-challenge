@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed:
 
 ## Architecture & Design Patterns
 
-## Expo SDK 55 Beta
+### Expo SDK 55 Beta
 
 This app is using the beta version of Expo SDK 55 which includes React Native 0.83.1 and React 19.2.0.
 
@@ -42,6 +42,80 @@ Uniwind provides Tailwind CSS utility classes for React Native:
   <Text className='text-2xl font-bold text-gray-900'>Hello World</Text>
 </View>
 ```
+
+## Solution Overview
+
+### Challenge Requirements Implementation
+
+This solution fulfills all challenge requirements:
+
+- ✅ 3x3 grid-based Tic Tac Toe gameplay
+- ✅ Player choice: go first or let computer go first
+- ✅ "You Won" screen on player victory
+- ✅ "You Lost" screen on computer victory
+- ✅ Game restart capability after completion
+- ✅ Unbeatable computer using **Minimax algorithm**
+- ✅ Prevents moves on occupied cells
+- ✅ Computer blocks player wins and pursues victories
+- ✅ Comprehensive README with technical documentation
+
+### Game Flow
+
+The main app manages two screens via `gameState`:
+
+1. **Menu Screen**: Player selects whether to go first (`playerGoesFirst` boolean)
+2. **Game Screen**: Game component receives the selection and initializes accordingly
+
+State transitions:
+
+- `"menu"` → `"playing"` when `startNewGame()` is called
+- `"playing"` → `"menu"` when `resetToMenu()` is called
+
+### Game Component Architecture (Game Component)
+
+#### State Management
+
+- `board`: 9-element array representing the grid
+- `isPlayerTurn`: Toggle between player and computer turns
+- `playerSymbol` / `computerSymbol`: Dynamically assigned based on who goes first
+- `gameState`: Tracks "won", "lost", "tie", or `null` (playing)
+- `isProcessing`: Prevents input during computer's decision delay
+
+#### Unbeatable AI: Minimax Algorithm
+
+The `minimax()` function recursively evaluates all possible board states:
+
+```typescript
+minimax(currentBoard, depth, isMaximizing);
+// Returns: 10 - depth (computer wins), depth - 10 (player wins), 0 (tie)
+// Depth penalizes slower wins and faster losses for optimal play
+```
+
+**Key features**:
+
+- **Win evaluation**: Computer always pursues winning moves (score +10)
+- **Loss prevention**: Computer blocks player wins (score -10)
+- **No invalid moves**: Skips occupied cells
+- **Optimal play**: Selects the move with highest score via `getBestMove()`
+
+#### Game Flow
+
+1. Player makes move → `handleCellPress()`
+2. Check for win/tie/continuation
+3. If game continues and it's computer's turn:
+   - `useEffect` triggers `makeComputerMove()`
+   - 500ms delay for better UX
+   - Minimax calculates best move
+   - Computer plays and checks game state
+4. If game ends: Display result screen and allow replay
+
+#### Result Screens
+
+Conditional rendering shows appropriate message:
+
+- Player victory: "You Won!"
+- Computer victory: "You Lost!"
+- Draw: "It's a Tie!"
 
 ## Installation
 
