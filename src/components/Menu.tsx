@@ -9,12 +9,14 @@ export const Menu = ({
 		<Text className="text-primary text-5xl mb-12 font-bold">Tic Tac Toe</Text>
 		<Text className="text-secondary text-2xl mb-12">Choose who goes first</Text>
 		<Pressable
+			testID="menu-player-first-button"
 			className="w-full py-4 bg-button-primary rounded-lg justify-center items-center mb-6"
 			onPress={() => startNewGame(true)}
 		>
 			<Text className="text-button-text-primary text-lg font-bold">{`I'll go first (X)`}</Text>
 		</Pressable>
 		<Pressable
+			testID="menu-computer-first-button"
 			className="w-full py-4 bg-button-tertiary rounded-lg justify-center items-center"
 			onPress={() => startNewGame(false)}
 		>

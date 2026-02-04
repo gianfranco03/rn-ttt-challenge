@@ -31,6 +31,7 @@ const Cell = ({
 }) => {
 	return (
 		<Pressable
+			testID="board-cell"
 			key={index}
 			className="w-23 h-23 border flex items-center pt-5 bg-cell-bg m-2 rounded-xl"
 			style={{
@@ -40,6 +41,7 @@ const Cell = ({
 			disabled={isDisabled}
 		>
 			<Text
+				testID="board-cell-value"
 				className={"text-6xl font-bold"}
 				style={
 					// FIXME: Improve color handling with Uniwind

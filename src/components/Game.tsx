@@ -193,7 +193,10 @@ export const Game = ({
 			<Text className="text-primary text-5xl mb-4 font-bold">Tic Tac Toe</Text>
 			<Activity mode={gameState ? "hidden" : "visible"}>
 				<View className="items-center">
-					<Text className="text-primary text-xl font-medium uppercase">
+					<Text
+						testID="game-title"
+						className="text-primary text-xl font-medium uppercase"
+					>
 						{isPlayerTurn && !isProcessing
 							? `Your turn `
 							: `Computer thinking... `}
@@ -203,20 +206,36 @@ export const Game = ({
 							className="items-center"
 							style={{ opacity: isPlayerTurn ? 1 : 0.5 }}
 						>
-							<Text className="text-player-x text-3xl font-bold">
+							<Text
+								testID="game-player-indicator"
+								className="text-player-x text-3xl font-bold"
+							>
 								{playerSymbol}
 							</Text>
-							<Text className="text-secondary text-lg font-medium">PLAYER</Text>
+							<Text
+								testID="game-player-symbol"
+								className="text-secondary text-lg font-medium"
+							>
+								PLAYER
+							</Text>
 						</View>
 						<View className="w-[0.5px] h-10 bg-secondary" />
 						<View
 							className="items-center"
 							style={{ opacity: isPlayerTurn ? 0.5 : 1 }}
 						>
-							<Text className="text-player-o text-3xl font-bold">
+							<Text
+								testID="game-cpu-indicator"
+								className="text-player-o text-3xl font-bold"
+							>
 								{computerSymbol}
 							</Text>
-							<Text className="text-secondary text-lg font-medium">CPU</Text>
+							<Text
+								testID="game-cpu-symbol"
+								className="text-secondary text-lg font-medium"
+							>
+								CPU
+							</Text>
 						</View>
 					</View>
 				</View>
@@ -252,6 +271,7 @@ export const Game = ({
 			<View className="h-6" />
 			<Activity mode={gameState ? "visible" : "hidden"}>
 				<Pressable
+					testID="game-play-again-button"
 					className="w-full py-4 bg-button-primary rounded-lg justify-center items-center mb-6"
 					onPress={() => resetBoard(false)}
 				>
@@ -259,6 +279,7 @@ export const Game = ({
 				</Pressable>
 			</Activity>
 			<Pressable
+				testID="game-reset-button"
 				className="w-full py-4 bg-button-secondary rounded-lg justify-center items-center"
 				onPress={() => resetBoard(true)}
 			>
